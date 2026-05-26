@@ -1,5 +1,7 @@
-# Compte combien de fois deux chiffres consécutifs forment +1.
-# Un caractère non-digit remet à zéro la séquence.
+# Écris une fonction qui compte le nombre de paires de chiffres consécutifs 
+# valides dans une chaîne. Une paire valide est formée de deux chiffres adjacents 
+# dont le second vaut exactement 
+# un de plus que le premier. Un 9 suivi d’un 0 n’est PAS une paire valide.
 
 # Examples
 # pattern_tracker("123") → 2
@@ -8,8 +10,17 @@
 # pattern_tracker("0123456789") → 9
 
 def pattern_tracker(text: str) -> int:
-    result = ''.join(c for c in text if c.isdigit() and c != "0")
-    return len(result)
+    count = 0
+    prev = None
+    for c in text:
+        if c.isdigit():
+            if prev is not None and int(c) == prev + 1:   
+                count += 1
+            prev = int(c)
+        else:
+            prev = None
+
+    return count
 
 
 if __name__ == "__main__":
