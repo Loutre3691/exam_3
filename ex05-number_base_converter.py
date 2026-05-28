@@ -31,13 +31,13 @@ def number_base_converter(number: str, from_base: int, to_base: int) -> str:
         return "ERROR" 
     
 if __name__ == "__main__":
-    result1 = number_base_converter("0", 2, 10)
+    result1 = number_base_converter("11", 2, 10)
     print(result1)
     result2 = number_base_converter("FF", 16, 10)
     print(result2)
-    result3 = number_base_converter("255", 10, 16)
+    result3 = number_base_converter("455", 10, 36)
     print(result3)
-    result4 = number_base_converter("XYZ", 10, 2)
+    result4 = number_base_converter("XYZ", 10, 16)
     print(result4)
-    result5 = number_base_converter("1111", 2, 16)
+    result5 = number_base_converter("1111", 2, 10)
     print(result5)
