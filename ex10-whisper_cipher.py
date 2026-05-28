@@ -18,6 +18,25 @@ def whisper_cipher(text: str, shift: int) -> str:
 
     return result
     
+# base = ord('A') = 65
+
+# ① ord('H')        = 72        ← position ASCII de H
+# ② 72 - 65         = 7         ← position dans l'alphabet (0=A, 1=B...)
+# ③ 7 + 3           = 10        ← on décale de 3
+# ④ 10 % 26         = 10        ← wrap (reste dans 0-25)
+# ⑤ 10 + 65         = 75        ← on remet en ASCII
+# ⑥ chr(75)         = 'K'  ✅
+
+
+# base = ord('a') = 97
+
+# ① ord('z')        = 122       ← position ASCII de z
+# ② 122 - 97        = 25        ← position dans l'alphabet (0=a ... 25=z)
+# ③ 25 + 3          = 28        ← on décale de 3
+# ④ 28 % 26         = 2         ← wrap ! 28 = 1×26 + 2, il reste 2
+# ⑤ 2 + 97          = 99        ← on remet en ASCII
+# ⑥ chr(99)         = 'c'  ✅
+
 
 if __name__ == "__main__":
     result1 = whisper_cipher("Hello", 3)
