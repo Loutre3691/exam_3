@@ -13,12 +13,7 @@
 def number_base_converter(number: str, from_base: int, to_base: int) -> str:
     digits = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"
     try:                 # Si digits.index(c) ne trouve pas c → ValueError → on retourne "ERROR"
-        decimal = 0      # Accumulateur : on va construire le nombre décimal ici
-        for c in number.upper():
-            val = digits.index(c)
-            if val >= from_base:    # Ex: '9' (val=9) en base 2 → impossible ! 9 >= 2 → ERROR
-                return "ERROR"
-            decimal = decimal * from_base + val     # La formule clé ! Même idée que lire "123" de gauche à droite 
+        decimal = int(number, from_base)   # Conversion auto avec int qui transofmre la str avec la base, calcul auto
         if decimal == 0:       # Si le nombre vaut 0, la boucle while ne s'exécuterait jamais
             return "0"
         result = ""
@@ -33,9 +28,9 @@ def number_base_converter(number: str, from_base: int, to_base: int) -> str:
 if __name__ == "__main__":
     result1 = number_base_converter("11", 2, 10)
     print(result1)
-    result2 = number_base_converter("FF", 16, 10)
+    result2 = number_base_converter("ff", 16, 10)
     print(result2)
-    result3 = number_base_converter("455", 10, 36)
+    result3 = number_base_converter("455", 10, 10)
     print(result3)
     result4 = number_base_converter("XYZ", 10, 16)
     print(result4)
